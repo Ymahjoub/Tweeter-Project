@@ -1,0 +1,115 @@
+.new-tweet {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.new-tweet h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px; 
+  color: black;
+}
+
+.new-tweet label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.new-tweet textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  resize: vertical;
+  border: none;
+  outline: none;
+  border-bottom: 5px solid black;
+  background-color: inherit;
+}
+
+.new-tweet button {
+  font-family: 'Bungee', sans-serif;
+  background-color: #4056A1;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.new-tweet output {
+  display: block;
+  margin-top: 5px;
+  font-family: 'Bungee', sans-serif;
+  ;
+}
+
+.tweet-btn {
+  float: left;
+}
+
+.counter {
+  float: right;
+}
+
+.invalid {
+  color: red;
+}  
+
+
+.tweet {
+  border: 5px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.tweet-content{
+  text-align: left;
+  border-bottom: 5px solid black;
+}
+
+.tweet header {
+  display: flex;
+  align-items: center;
+}
+
+.tweet header img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.tweet-handle {
+ margin-left: auto;
+}
+
+.tweet-container {
+  margin-top: 50px;
+}
+
+.tweet footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.tweet .icons i {
+  margin-right: 10px;
+  color: #555;
+}
+
+.tweet:hover {
+  box-shadow: 5px 5px 5px;
+} 
+
+.icons i.fa-flag:hover {
+  color: gold;
+} 
+
+.icons i.fa-retweet:hover {
+  color: gold;
+} 
+
+.icons i.fa-heart:hover {
+  color: gold;
+}
