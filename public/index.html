@@ -47,15 +47,13 @@
 
         // Use AJAX to submit the form data to the server 
         $.ajax({
-          url: '/tweet',
+          url: '/tweets',
           method: 'POST',
           data: formData,
           success: function (response) {
 
             // Log the server response
             console.log('Server Response:', response);
-
-            renderTweet([response]);
           },
           error: function (error) {
             console.error('Error:', error);
