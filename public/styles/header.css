@@ -1,8 +1,8 @@
  body header#main-header { 
   height: 520px;
   width: 100%;
-  background-color: #090a1a;
-  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+  background-color: #240000;
+  background-image: url("https://www.transparenttextures.com/patterns/foggy-birds.png");
   display: flex;
   flex-direction: column;
   justify-content: center;

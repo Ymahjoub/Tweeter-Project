@@ -49,6 +49,8 @@
       tweetTextarea.addEventListener('keyup', (event) => {
         console.log('Keyup event:', event);
       });
+
+      run()
     });
   </script>
 </head>
@@ -57,7 +59,7 @@
   <!-- Top nav bar (fixed) -->
   <nav>
     <span>Tweeter</span>
-    <div class="tweet-content">
+    <div class="tweet-nav-content">
       <p id="create-tweet"><span id="Write"> Write</span> a new tweet</p>
       <i class="fa-solid fa-angles-down"></i>
     </div>
