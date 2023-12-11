@@ -1,38 +1,6 @@
-//Import test data 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1702088929973
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1702175329973
-  }
-]
-
-const calculateDaysAgo = function (timestamp) {
-  const currentTimestamp = new Date().getTime();
-  const differenceInMilliseconds = currentTimestamp - timestamp;
-  const daysAgo = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24));
-  return daysAgo;
-}
 
 const createTweetElement = function (tweet) {
-  const daysAgo = calculateDaysAgo(tweet.created_at)
+  const daysAgo = timeago.format(tweet.created_at)
   const $tweet = $(`
   <article class="tweet">
   <header>
@@ -66,11 +34,25 @@ const renderTweets = function (tweets) {
   });
 };
 
-
-// TODO: only for testing
-const run = function () {
-  renderTweets(data);
+function loadTweets() {
+  $.ajax({
+    method: 'GET', 
+    url: 'http://localhost:8080/tweets',
+    dataType: 'json',
+    success: function (tweets) {
+      renderTweets(tweets);
+    },
+    error: function (error) {
+      console.error('Error loading tweets:', error);
+    }
+  });
 }
+
+$(document).ready(function () {
+  loadTweets();
+});
+
+
 
 
 
