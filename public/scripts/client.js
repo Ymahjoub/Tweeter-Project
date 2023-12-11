@@ -9,10 +9,10 @@ const createTweetElement = function (tweet) {
     <p class="tweet-handle">${tweet.user.handle}</p>
   </header>
   <div class="tweet-content">
-    <p>${tweet.content.text}</p>
+  <p>${escapeTweetText(tweet.content.text)}</p>
   </div>
   <footer>
-  <p>${daysAgo} days ago</p>
+  <p>${daysAgo}</p>
     <div class="icons">
       <i class="far fa-flag"></i>
       <i class="fas fa-retweet"></i>
@@ -30,13 +30,13 @@ const renderTweets = function (tweets) {
   tweets.forEach(tweet => {
     const $tweet = createTweetElement(tweet);
     console.log($tweet)
-    $('.tweet-container').append($tweet);
+    $('.tweet-container').prepend($tweet);
   });
 };
 
 function loadTweets() {
   $.ajax({
-    method: 'GET', 
+    method: 'GET',
     url: 'http://localhost:8080/tweets',
     dataType: 'json',
     success: function (tweets) {
@@ -50,6 +50,66 @@ function loadTweets() {
 
 $(document).ready(function () {
   loadTweets();
+});
+
+const validateTweetContent = function() {
+  const tweetContent = $('#tweet-text').val();
+  if (!tweetContent) {
+    alert('tweet content is empty, please fill in your message');
+    return false
+  }
+  if (tweetContent.length > 140) {
+    alert('exceeds the maximum limit of 140 characters')
+    return false;
+  }
+  return true;
+};
+
+const escapeTweetText = function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
+const clearTweetContent = function() {
+  $('#tweet-text').val('');
+}
+
+
+$(document).ready(function () {
+  // Add an event listener for form submission
+  $('form').submit(function (event) {
+   
+    //prevent the default form submission behavior 
+    event.preventDefault();
+
+    if (!validateTweetContent()) {
+      return
+    }
+
+    // Serialize the form data
+    const formData = $(this).serialize();
+
+    // Log the serialized data
+    console.log('Serialized form Data:', formData);
+
+    // Use AJAX to submit the form data to the server 
+    $.ajax({
+      url: '/tweets',
+      method: 'POST',
+      data: formData,
+      success: function (response) {
+        loadTweets();
+        clearTweetContent();
+        // Log the server response
+        console.log('Server Response:', response);
+      },
+      error: function (error) {
+        console.error('Error:', error);
+      }
+    });
+
+  });
 });
 
 
