@@ -67,7 +67,7 @@ const renderTweets = function (tweets) {
 };
 
 
-
+// TODO: only for testing
 const run = function () {
   renderTweets(data);
 }
