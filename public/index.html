@@ -31,6 +31,42 @@
   <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
   <script>
+    $(document).ready(function () {
+
+      // Add an event listener for form submission
+      $('form').submit(function (event) {
+
+        //prevent the default form submission behavior 
+        event.preventDefault();
+
+        // Serialize the form data
+        const formData = $(this).serialize();
+
+        // Log the serialized data
+        console.log('Serialized form Data:', formData);
+
+        // Use AJAX to submit the form data to the server 
+        $.ajax({
+          url: '/tweet',
+          method: 'POST',
+          data: formData,
+          success: function (response) {
+
+            // Log the server response
+            console.log('Server Response:', response);
+
+            renderTweet([response]);
+          },
+          error: function (error) {
+            console.error('Error:', error);
+          }
+        });
+
+      });
+    });
+  </script>
+
+  <script>
     document.addEventListener("DOMContentLoaded", () => {
       const tweetTextarea = document.getElementById('tweet-text');
 
