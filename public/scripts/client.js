@@ -52,16 +52,31 @@ $(document).ready(function () {
   loadTweets();
 });
 
+const showError = function(errorMsg) {
+  const errorContainer = $('#error-container')
+  errorContainer.addClass('error-container')
+  errorContainer.removeClass('hide')
+  errorContainer.text(errorMsg)
+} 
+
+const hideError = function() {
+  const errorContainer = $('#error-container')
+  errorContainer.addClass('hide')
+  errorContainer.removeClass('error-container')
+  errorContainer.text('')
+}
+
 const validateTweetContent = function() {
   const tweetContent = $('#tweet-text').val();
   if (!tweetContent) {
-    alert('tweet content is empty, please fill in your message');
+    showError('tweet content is empty, please fill in your message');
     return false
   }
   if (tweetContent.length > 140) {
-    alert('exceeds the maximum limit of 140 characters')
+    showError('exceeds the maximum limit of 140 characters')
     return false;
   }
+  hideError();
   return true;
 };
 
