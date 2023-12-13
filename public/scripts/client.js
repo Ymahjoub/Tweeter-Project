@@ -39,7 +39,7 @@ const renderTweets = function (tweets) {
 function loadTweets() {
   $.ajax({
     method: 'GET',
-    url: 'http://localhost:8080/tweets',
+    url: '/tweets',
     dataType: 'json',
     success: function (tweets) {
       renderTweets(tweets);
