@@ -89,7 +89,7 @@ const escapeTweetText = function (str) {
 }
 
 const clearTweetContent = function () {
-  $('#tweet-text').val('');
+  $('#tweet-text').val('').trigger("input");
 }
 
 
