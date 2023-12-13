@@ -8,12 +8,7 @@ nav {
   justify-content: space-between;
   align-items: center; 
   position: fixed;
-}  
-
-
-nav span {
-  font-family: 'Bungee', sans-serif;
-} 
+}
 
 nav span#create-tweet {
   display: flex;

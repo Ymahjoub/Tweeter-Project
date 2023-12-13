@@ -31,7 +31,7 @@
   <script type="text/javascript" src="/scripts/client.js"></script>
   <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
-  <script>
+  <!-- <script>
     document.addEventListener("DOMContentLoaded", () => {
       const tweetTextarea = document.getElementById('tweet-text');
 
@@ -51,7 +51,7 @@
         console.log('Keyup event:', event);
       });
     });
-  </script>
+  </script> -->
 </head>
 
 <body>
@@ -64,7 +64,7 @@
     </div>
   </nav>
 
-  <header id="main-header">
+  <header class="main-header">
     <div class="pic">
       <img src="/images/profile-hex.png">
     </div>
@@ -87,11 +87,13 @@
       </form>
     </section>
 
-    <section class="tweet-container">
+    <section class="tweets-container">
       <article class="tweet">
         <header>
-          <img src="/images/profile-hex.png" alt="User Profile Picture">
-          <h3>Yusuf Mahjoub</h3>
+          <div>
+            <img src="/images/profile-hex.png" alt="User Profile Picture">
+            <h3>Yusuf Mahjoub</h3>
+          </div>
           <p class="tweet-handle">@yusuf_m</p>
         </header>
         <div class="tweet-content">

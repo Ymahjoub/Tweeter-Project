@@ -4,8 +4,10 @@ const createTweetElement = function (tweet) {
   const $tweet = $(`
   <article class="tweet">
   <header>
+  <div>
     <img src="${tweet.user.avatars}" alt="User Profile Picture">
     <h3>${tweet.user.name}</h3>
+    </div>
     <p class="tweet-handle">${tweet.user.handle}</p>
   </header>
   <div class="tweet-content">
@@ -25,12 +27,12 @@ const createTweetElement = function (tweet) {
 };
 
 const renderTweets = function (tweets) {
-  $('.tweet-container').empty();
-  console.log($('tweet-container'))
+  $('.tweets-container').empty();
+  console.log($('.tweets-container'))
   tweets.forEach(tweet => {
     const $tweet = createTweetElement(tweet);
     console.log($tweet)
-    $('.tweet-container').prepend($tweet);
+    $('.tweets-container').prepend($tweet);
   });
 };
 
@@ -52,21 +54,21 @@ $(document).ready(function () {
   loadTweets();
 });
 
-const showError = function(errorMsg) {
+const showError = function (errorMsg) {
   const errorContainer = $('#error-container')
   errorContainer.addClass('error-container')
   errorContainer.removeClass('hide')
   errorContainer.text(errorMsg)
-} 
+}
 
-const hideError = function() {
+const hideError = function () {
   const errorContainer = $('#error-container')
   errorContainer.addClass('hide')
   errorContainer.removeClass('error-container')
   errorContainer.text('')
 }
 
-const validateTweetContent = function() {
+const validateTweetContent = function () {
   const tweetContent = $('#tweet-text').val();
   if (!tweetContent) {
     showError('tweet content is empty, please fill in your message');
@@ -80,13 +82,13 @@ const validateTweetContent = function() {
   return true;
 };
 
-const escapeTweetText = function(str) {
+const escapeTweetText = function (str) {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 }
 
-const clearTweetContent = function() {
+const clearTweetContent = function () {
   $('#tweet-text').val('');
 }
 
@@ -94,7 +96,7 @@ const clearTweetContent = function() {
 $(document).ready(function () {
   // Add an event listener for form submission
   $('form').submit(function (event) {
-   
+
     //prevent the default form submission behavior 
     event.preventDefault();
 
